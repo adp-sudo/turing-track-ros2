@@ -15,8 +15,8 @@ setup(
     zip_safe=True,
     maintainer='root',
     maintainer_email='root@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='D500 sensor model and test driving node for the Turing Track simulator',
+    license='MIT',
     extras_require={
         'test': [
             'pytest',

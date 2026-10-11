@@ -18,3 +18,11 @@ Clone this repo into ~/sim_ws/src, then build with colcon:
     source install/setup.bash
 
 The full setup and run commands are in the command reference in docs/.
+
+## Docker (work in progress)
+Build the base image first, then the participant image, from the repo root:
+
+    sudo docker build -t turing/base:humble docker/base
+    sudo docker build -t turing/participant:dev -f docker/participant/Dockerfile .
+
+The participant container runs the turing_drive test node. Testing it against the simulator is still in progress.
