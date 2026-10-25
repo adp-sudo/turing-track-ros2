@@ -1,0 +1,10 @@
+
+services:
+  participant:
+    image: ${PARTICIPANT_IMAGE:-turing/participant:dev}
+    container_name: turing-participant
+    network_mode: host
+    environment:
+      ROS_DOMAIN_ID: "${ROS_DOMAIN_ID:-0}"
+    restart: "no"
+
