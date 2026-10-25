@@ -26,3 +26,33 @@ Build the base image first, then the participant image, from the repo root:
     sudo docker build -t turing/participant:dev -f docker/participant/Dockerfile .
 
 The participant container runs the turing_drive test node. Testing it against the simulator is still in progress.
+
+
+## Docker participant workflow
+
+The Docker setup uses a reusable participant container template.
+The selected participant image can be changed without editing the
+Compose configuration.
+
+### Start or switch the participant
+
+    chmod +x scripts/swap-mode.sh
+    ./scripts/swap-mode.sh turing/participant:dev
+
+To select another participant image:
+
+    ./scripts/swap-mode.sh team-a/planner:v1
+
+The selected image must already be available locally or pulled from a registry.
+
+### View logs and stop the participant
+
+    docker compose logs -f participant
+    docker compose down
+
+Participant images must follow the agreed ROS 2 topic contract.
+Only the selected planner should be active, and its commands must
+pass through the approved safety interface before reaching the car.
+
+Physical-car deployment requires separate hardware validation.
+
